@@ -1,0 +1,714 @@
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+
+class intro {
+    private Win_1 W_1;
+    public void setNextWindow(Win_1 W_1) {
+        this.W_1 = W_1;
+    }  // this is for calling of window 1
+
+    public intro() {  // This is the proper constructor
+        JFrame frameMain = new JFrame();
+        frameMain.setSize(600,500);
+        frameMain.setLayout(new GridLayout(1,1));
+        frameMain.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frameMain.setLocationRelativeTo(null);
+
+        // Using a placeholder for the image - replace with your actual image path
+        ImageIcon backgroundImage = new ImageIcon("tikmain.jpg");
+        JLabel backgroundLabel = new JLabel(backgroundImage);
+        backgroundLabel.setLayout(new BorderLayout());
+        frameMain.setContentPane(backgroundLabel);
+
+        JButton buttonforward = new JButton("Forward");
+        buttonforward.setFocusable(false);
+        buttonforward.setForeground(Color.LIGHT_GRAY);
+        buttonforward.setBackground(new Color(40, 40, 40));
+        buttonforward.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                W_1.Wind_1();
+                frameMain.dispose(); // Close the current window
+            }
+        });
+
+        backgroundLabel.add(buttonforward, BorderLayout.SOUTH);
+        frameMain.setVisible(true);
+
+        JLabel labelname = new JLabel("Tik-Tak-Tak",SwingConstants.CENTER);
+        labelname.setOpaque(true);// sets the background to not transparent os color cam be filled
+        labelname.setBackground(new Color(40, 40, 40));
+        labelname.setForeground(Color.LIGHT_GRAY);
+        labelname.setPreferredSize(new Dimension(0,30));
+        labelname.setFont(new Font("",Font.BOLD ,15));
+        backgroundLabel.add(labelname,BorderLayout.NORTH);
+
+    }
+}
+class Win_1 {
+
+    private Win_2 W_2;
+    private Win_3 W_3;
+
+    public void setNextWindow(Win_2 W_2, Win_3 W_3) {
+        this.W_2 = W_2;
+        this.W_3 = W_3;
+    }
+
+    public void Wind_1() {
+        JFrame frame1 = new JFrame();
+        frame1.setSize(600,500);
+        frame1.setLayout(new BorderLayout());
+        frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame1.setLocationRelativeTo(null);
+
+        JPanel panel1 = new JPanel();
+        panel1.setBackground(Color.lightGray);
+        panel1.setLayout(null);
+        frame1.add(panel1);
+
+        JLabel  labelheader = new JLabel("Tik-Tak-Tak",SwingConstants.CENTER);
+        labelheader.setOpaque(true);// sets the background to not transparent os color cam be filled
+        labelheader.setBackground(new Color(40, 40, 40));
+        labelheader.setForeground(Color.LIGHT_GRAY);
+        labelheader.setPreferredSize(new Dimension(0,30));
+        labelheader.setFont(new Font("",Font.BOLD ,15));
+        panel1.add(labelheader);
+
+        JButton buttonlogin = new JButton("Log In");
+        buttonlogin.setBounds(350,250,120,25);
+        buttonlogin.setPreferredSize(new Dimension(120,25));
+        buttonlogin.setBackground(new Color(212, 175, 55));
+        buttonlogin.setForeground(new Color(40, 40, 40));
+        buttonlogin.setFocusable(false);
+        buttonlogin.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(null, "login will help keep track of stats!");{
+                    {
+                        W_2.Wind_2();
+                    }
+                }
+                frame1.dispose();
+            }
+        });
+        panel1.add(buttonlogin);
+
+        JButton buttonStart = new JButton("New Game");
+        buttonStart.setBounds(150,250,120,25);
+      buttonStart.setPreferredSize(new Dimension(120,25));
+      buttonStart.setForeground(new Color(245, 245, 245));
+        buttonStart.setBackground(new Color(0, 128, 128));
+        buttonStart.setFocusable(false);
+        buttonStart.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                {
+                    W_3.Wind_3();
+                }
+                frame1.dispose();
+            }
+        });
+        panel1.add(buttonStart);
+
+        frame1.setVisible(true);
+    }
+}
+
+class Win_2 {
+    JFrame frame2;
+    ArrayList<String> name = new ArrayList<>();
+    ArrayList<String> age = new ArrayList<>();
+    ArrayList<String> username = new ArrayList<>();
+    ArrayList<String> Wins = new ArrayList<>();
+    ArrayList<String> Loses = new ArrayList<>();
+
+    JLabel labelname;
+    JLabel labelage  ;
+    JLabel labelusername;
+    JLabel labelheader;
+
+    JTextField textFieldname;
+    JTextField textFieldage;
+    JTextField textFieldusername;
+
+    JPanel panel2;
+   JPanel panelnew;
+    JButton button;
+
+    private Win_3 W_3;  // Reference to Win_3
+
+    public void setNextWindow(Win_3 W_3) {
+        this.W_3 = W_3;
+    }
+
+    public void Wind_2() {
+        // Initialize with some sample data
+        name.add("imran");
+        name.add("huzaiaf");
+        name.add("kiran");
+
+        age.add("23");
+        age.add("18");
+        age.add("19");
+
+        username.add("imro");
+        username.add("huzi");
+        username.add("kiru");
+
+        Wins.add("3");
+        Wins.add("9");
+        Wins.add("10");
+
+        Loses.add("5");
+        Loses.add("4");
+        Loses.add("11");
+
+        frame2 = new JFrame("Login");
+        frame2.setSize(600, 500);
+        frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame2.setLocationRelativeTo(null);
+
+        panel2 = new JPanel();
+        panel2.setLayout(null);
+        panel2.setLayout(new BorderLayout());
+        panel2.setSize(600, 500);
+        frame2.add(panel2);
+
+        panelnew  = new JPanel();
+        panelnew.setOpaque(true);
+        panelnew.setBackground(Color.lightGray);
+        panelnew.setLayout(null);
+        panel2.add(panelnew,BorderLayout.CENTER);
+
+        labelheader = new JLabel("Log-In",SwingConstants.CENTER);
+        labelheader.setOpaque(true);// sets the background to not transparent os color cam be filled
+        labelheader.setForeground(Color.LIGHT_GRAY);
+        labelheader.setLayout(null);
+        labelheader.setFont(new Font("",Font.BOLD ,15));
+        labelheader.setBackground(new Color(40, 40, 40));
+        labelheader.setPreferredSize(new Dimension(0,30));
+        panel2.add(labelheader,BorderLayout.NORTH);
+
+        labelname = new JLabel("Enter name:");
+        labelname.setBounds(180, 100, 100, 20);
+        labelname.setFont(new Font(" ",Font.PLAIN,13));
+        panelnew.add(labelname);
+
+        labelage = new JLabel("Enter age:");
+        labelage.setBounds(180, 160, 100, 20);
+        labelage.setFont(new Font(" ",Font.PLAIN,13));
+        panelnew.add(labelage);
+
+        labelusername = new JLabel("Enter username:");
+        labelusername.setBounds(180, 220, 100, 20);
+        labelusername.setFont(new Font(" ",Font.PLAIN,13));
+        panelnew.add(labelusername);
+
+        textFieldname = new JTextField();
+        textFieldname.setBounds(310, 100, 130, 25);
+        panelnew.add(textFieldname);
+
+        textFieldage = new JTextField();
+        textFieldage.setBounds(310, 160, 130, 25);
+        panelnew.add(textFieldage);
+
+        textFieldusername = new JTextField();
+        textFieldusername.setBounds(310, 220, 130, 25);
+        panelnew.add(textFieldusername);
+
+        button = new JButton("Submit");
+        button.setOpaque(true);
+        button.setBackground(new Color(135, 206, 235));
+        button.setFocusable(false);
+        button.setBounds(230, 280, 130, 25);
+        button.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String pname = textFieldname.getText();
+                String page = textFieldage.getText();
+                String pusername = textFieldusername.getText();
+
+                if (!pname.isEmpty() && !page.isEmpty() && !pusername.isEmpty()) {
+                    name.add(pname);
+                    age.add(page);
+                    username.add(pusername);
+                    {
+                        W_3.Wind_3();
+                        frame2.dispose();
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please fill all fields");
+                }
+            }
+        });
+        panel2.add(button,BorderLayout.SOUTH);
+
+        frame2.setVisible(true);
+    }
+}
+class Win_3 {
+    JFrame frame3;
+    JPanel panel3;
+
+    JButton buttonDone;
+    JButton buttonDraw;
+    JButton buttonNext;
+    JButton buttonRestart;
+
+    JButton[][] buttons = new JButton[3][3];
+
+    boolean isXTurn = true;
+    private Win_4 W_4;  // Reference to Win_4 for navigation
+
+    public void setNextWindow(Win_4 W_4) {
+        this.W_4 = W_4;
+    }
+
+    public void Wind_3() {
+        frame3 = new JFrame("Tic-Tac-Toe Game");
+        frame3.setSize(600, 500);
+        frame3.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame3.setLayout(null);
+        frame3.setLocationRelativeTo(null);
+
+        // Main game board panel
+        panel3 = new JPanel();
+        panel3.setBounds(150, 20, 300, 300);
+        panel3.setLayout(new GridLayout(3, 3));
+        panel3.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
+        frame3.add(panel3);
+
+        // Control buttons panel
+        JPanel controlPanel = new JPanel();
+        controlPanel.setBounds(100, 350, 400, 100);
+        controlPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 20, 10));
+        frame3.add(controlPanel);
+
+        // Game buttons
+        buttonDone = new JButton("Done");
+        buttonDone.setOpaque(true);
+        buttonDone.setBackground(new Color(0, 200, 83));
+        buttonDone.setFocusable(false);
+        buttonDone.addActionListener(e -> endGame());
+
+        buttonDraw = new JButton("Draw");
+        buttonDraw.setOpaque(true);
+        buttonDraw.setBackground(new Color(0, 123, 255));
+        buttonDraw.setFocusable(false);
+        buttonDraw.addActionListener(e -> declareDraw());
+
+        buttonNext = new JButton("Next");
+        buttonNext.setOpaque(true);
+        buttonNext.setBackground(new Color(0, 180, 180));
+        buttonNext.setFocusable(false);
+        buttonNext.addActionListener(e -> {
+            if (W_4 != null) {
+                W_4.Wind_4();
+                frame3.dispose();
+            }
+        });
+
+        buttonRestart = new JButton("Restart");
+        buttonRestart.setOpaque(true);
+        buttonRestart.setBackground(new Color(255, 191, 0));
+        buttonRestart.setFocusable(false);
+        buttonRestart.addActionListener(e -> restartGame());
+
+        controlPanel.add(buttonDone);
+        controlPanel.add(buttonDraw);
+        controlPanel.add(buttonRestart);
+        controlPanel.add(buttonNext);
+
+        // Initialize game board
+        Font font = new Font("Arial", Font.BOLD, 60);
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                buttons[i][j] = new JButton("");
+                buttons[i][j].setFont(font);
+                buttons[i][j].setFocusable(false);
+                buttons[i][j].addActionListener(new ButtonClickListener(i, j));
+                panel3.add(buttons[i][j]);
+            }
+        }
+
+        frame3.setVisible(true);
+    }
+
+    private class ButtonClickListener implements ActionListener {
+        private int row, col;
+
+        public ButtonClickListener(int row, int col) {
+            this.row = row;
+            this.col = col;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            JButton button = buttons[row][col];
+            if (button.getText().equals("")) {
+                button.setText(isXTurn ? "X" : "O");
+                isXTurn = !isXTurn;
+                checkGameStatus();
+            }
+        }
+    }
+
+    private void checkGameStatus() {
+        // Check for win conditions
+        if (checkWin("X")) {
+            JOptionPane.showMessageDialog(frame3, "X Wins!");
+            disableAllButtons();
+        } else if (checkWin("O")) {
+            JOptionPane.showMessageDialog(frame3, "O Wins!");
+            disableAllButtons();
+        } else if (isBoardFull()) {
+            JOptionPane.showMessageDialog(frame3, "It's a Draw!");
+        }
+    }
+
+    private boolean checkWin(String symbol) {
+        // Check rows
+        for (int i = 0; i < 3; i++) {
+            if (buttons[i][0].getText().equals(symbol) &&
+                    buttons[i][1].getText().equals(symbol) &&
+                    buttons[i][2].getText().equals(symbol)) {
+                return true;
+            }
+        }
+
+        // Check columns
+        for (int j = 0; j < 3; j++) {
+            if (buttons[0][j].getText().equals(symbol) &&
+                    buttons[1][j].getText().equals(symbol) &&
+                    buttons[2][j].getText().equals(symbol)) {
+                return true;
+            }
+        }
+
+        // Check diagonals
+        if (buttons[0][0].getText().equals(symbol) &&
+                buttons[1][1].getText().equals(symbol) &&
+                buttons[2][2].getText().equals(symbol)) {
+            return true;
+        }
+
+        return buttons[0][2].getText().equals(symbol) &&
+                buttons[1][1].getText().equals(symbol) &&
+                buttons[2][0].getText().equals(symbol);
+    }
+
+    private boolean isBoardFull() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                if (buttons[i][j].getText().equals("")) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    private void disableAllButtons() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                buttons[i][j].setEnabled(false);
+            }
+        }
+    }
+
+    private void enableAllButtons() {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                buttons[i][j].setEnabled(true);
+            }
+        }
+    }
+
+    private void endGame() {
+        int choice = JOptionPane.showConfirmDialog(frame3,
+                "Are you sure you want to end the current game?",
+                "End Game",
+                JOptionPane.YES_NO_OPTION);
+        if (choice == JOptionPane.YES_OPTION) {
+            frame3.dispose();
+        }
+    }
+
+    private void declareDraw() {
+        int choice = JOptionPane.showConfirmDialog(frame3,
+                "Declare this game as a draw?",
+                "Draw Game",
+                JOptionPane.YES_NO_OPTION);
+        if (choice == JOptionPane.YES_OPTION) {
+            JOptionPane.showMessageDialog(frame3, "Game declared as draw!");
+            disableAllButtons();
+        }
+    }
+
+    private void restartGame() {
+        int choice = JOptionPane.showConfirmDialog(frame3,
+                "Are you sure you want to restart the game?",
+                "Restart Game",
+                JOptionPane.YES_NO_OPTION);
+        if (choice == JOptionPane.YES_OPTION) {
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    buttons[i][j].setText("");
+                }
+            }
+            enableAllButtons();
+            isXTurn = true;
+        }
+    }
+}
+
+class Win_4 {
+    JFrame frame4;
+
+    JButton button1;
+    JButton button2;
+    JButton button3;
+    JButton button4;
+
+
+    JPanel panel4;
+    JPanel panelNEw;
+
+
+    private Win_2 W_2;// Reference to Win_2 for accessing player data
+    private Win_1 W_1;
+
+    public void setWin2Reference(Win_2 W_2,Win_1 W_1) {
+        this.W_2 = W_2;
+        this.W_1 = W_1;
+
+    }
+
+    public void Wind_4() {
+        frame4 = new JFrame("Game Menu");
+        frame4.setSize(600, 500);
+        frame4.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame4.setLocationRelativeTo(null);
+
+        panel4 = new JPanel();
+        panel4.setLayout(null);
+        panel4.setSize(600, 500);
+        frame4.add(panel4);
+
+
+
+        button2 = new JButton("Wins");
+        button2.setOpaque(true);
+        button2.setBackground(new Color(144, 238, 144));
+        button2.setBounds(90, 90, 200, 80);
+        button2.setFont(new Font("", Font.BOLD, 15));
+        button2.setFocusable(false);
+        button2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showWins();
+            }
+        });
+        panel4.add(button2);
+
+        button3 = new JButton("Loses");
+        button3.setOpaque(true );
+        button3.setBackground(new Color(255, 165, 0));
+        button3.setBounds(300, 90, 200, 80);
+        button3.setFont(new Font("", Font.BOLD, 15));
+        button3.setFocusable(false);
+        button3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showLoses();
+            }
+        });
+        panel4.add(button3);
+
+        button1 = new JButton("See all players");
+        button1.setOpaque(true);
+        button1.setBackground(new Color(135, 206, 235));
+        button1.setBounds(90, 250, 200, 80);
+        button1.setFont(new Font("", Font.BOLD, 15));
+        button1.setFocusable(false);
+        button1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showPlayerList();
+            }
+        });
+        panel4.add(button1);
+
+        button4 = new JButton("Main menu");
+        button4.setOpaque(true);
+        button4.setBackground(new Color(255, 102, 102));
+        button4.setBounds(300, 250, 200, 80);
+        button4.setFont(new Font("", Font.BOLD, 15));
+        button4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                W_1.Wind_1();
+            }
+        });
+        button4.setFocusable(false);
+        panel4.add(button4);
+
+        frame4.setVisible(true);
+    }
+
+    private void showPlayerList() {
+        if (W_2 == null) {
+            JOptionPane.showMessageDialog(null, "No player data available");
+            return;
+        }
+
+        JDialog dialog = new JDialog(frame4, "Player List", true);
+        dialog.setSize(600, 500);
+        dialog.setLayout(new BorderLayout());
+
+        String[] columns = {"Name", "Age", "Username"};
+        DefaultTableModel model = new DefaultTableModel(columns, 0);
+
+        for (int i = 0; i < W_2.name.size(); i++) {
+            model.addRow(new Object[]{
+                    W_2.name.get(i),
+                    W_2.age.get(i),
+                    W_2.username.get(i)
+            });
+        }
+
+        JTable table = new JTable(model);
+        JScrollPane scrollPane = new JScrollPane(table);
+        dialog.add(scrollPane, BorderLayout.CENTER);
+
+        JButton btnClose = new JButton("Close");
+        btnClose.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dialog.dispose();
+            }
+        });
+        dialog.add(btnClose, BorderLayout.SOUTH);
+
+        dialog.setLocationRelativeTo(frame4);
+        dialog.setVisible(true);
+    }
+
+    private void showWins() {
+        JDialog dialog = new JDialog(frame4, "Wins", true);
+        dialog.setSize(600, 500);
+        dialog.setLayout(new BorderLayout());
+
+        String[] columns = {"Name", "Username", "Wins"};
+        DefaultTableModel model = new DefaultTableModel(columns, 0);
+
+        // Only show the first 3 sample players (imran, huzaiaf, kiran)
+        int playersToShow = Math.min(3, W_2.name.size());
+        for (int i = 0; i < playersToShow; i++) {
+            model.addRow(new Object[]{
+                    W_2.name.get(i),
+                    W_2.username.get(i),
+                    W_2.Wins.get(i)
+            });
+        }
+
+        JTable table = new JTable(model);
+        JScrollPane scrollPane = new JScrollPane(table);
+        dialog.add(scrollPane, BorderLayout.CENTER);
+
+        JButton btnClose = new JButton("Close");
+        btnClose.addActionListener(e -> dialog.dispose());
+        dialog.add(btnClose, BorderLayout.SOUTH);
+
+        dialog.setLocationRelativeTo(frame4);
+        dialog.setVisible(true);
+    }
+
+    private void showLoses() {
+        JDialog dialog = new JDialog(frame4, "Loses", true);
+        dialog.setSize(600, 500);
+        dialog.setLayout(new BorderLayout());
+
+        String[] columns = {"Name", "Username", "Loses"};
+        DefaultTableModel model = new DefaultTableModel(columns, 0);
+
+        // Only show the first 3 sample players (imran, huzaiaf, kiran)
+        int playersToShow = Math.min(3, W_2.name.size());
+        for (int i = 0; i < playersToShow; i++) {
+            model.addRow(new Object[]{
+                    W_2.name.get(i),
+                    W_2.username.get(i),
+                    W_2.Loses.get(i)
+            });
+        }
+
+        JTable table = new JTable(model);
+        JScrollPane scrollPane = new JScrollPane(table);
+        dialog.add(scrollPane, BorderLayout.CENTER);
+
+        JButton btnClose = new JButton("Close");
+        btnClose.addActionListener(e -> dialog.dispose());
+        dialog.add(btnClose, BorderLayout.SOUTH);
+
+        dialog.setLocationRelativeTo(frame4);
+        dialog.setVisible(true);
+    }
+}
+
+class Win_last
+{
+    JFrame framelast;
+    JPanel panellast;
+
+    JLabel labellast1;
+    JLabel labellast2;
+
+    public void Win_last()
+    {
+        framelast = new JFrame();
+        framelast.setLayout(null);
+        framelast.setSize(600, 500);
+        framelast.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        framelast.setLocationRelativeTo(null);
+
+        panellast = new JPanel();
+        framelast.add(panellast);
+
+
+        labellast1 = new JLabel();
+        labellast1.setBounds(250,200,100,20);
+        labellast1.setText("Thank you for playing ");
+        panellast.add(labellast1);
+
+        labellast2 = new JLabel();
+        labellast1.setBounds(250,250,100,20);
+        labellast2.setText("Hope you like it");
+        panellast.add(labellast2);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Initialize all windows
+        intro I = new intro();
+        Win_1 win1 = new Win_1();
+        Win_2 win2 = new Win_2();
+        Win_3 win3 = new Win_3();  // Assuming you have this class
+        Win_4 win4 = new Win_4();
+        Win_last W_l = new Win_last();
+
+        // Set up window navigation
+        win1.setNextWindow(win2, win3);
+        win2.setNextWindow(win3);
+        win3.setNextWindow(win4);  // win4 is your Win_4 instance
+        win4.setWin2Reference(win2,win1);
+
+        I.setNextWindow(win1);
+    }
+}
